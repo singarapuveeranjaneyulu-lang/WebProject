@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Hotel Food Ordering</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.about-hero {
+    background-image: url('https://images.pexels.com/photos/1001965/pexels-photo-1001965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.about-hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+/* About Details */
+.about-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.about-info {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.about-info h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.about-info p {
+    font-size: 1.2em;
+    line-height: 1.8em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hotel Features */
+.about-features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.feature-box {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px;
+}
+
+.feature-box:last-child {
+    margin-right: 0;
+}
+
+.feature-box img {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 15px;
+    object-fit: fill;
+}
+
+.feature-box h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+
+
+
+/* Container for the About Section */
+.about-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Section Titles */
+.about-section h2 {
+    font-size: 28px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #8B0000; /* Red underline */
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styling */
+.about-section p {
+    text-align: justify;
+    padding: 0 15px;
+}
+
+/* History Section */
+.hotel-history {
+    margin-bottom: 40px;
+}
+
+/* Mission & Vision Section */
+.mission-vision {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+/* Culinary Excellence Section */
+.culinary-excellence {
+    background: url('culinary-background.jpg') no-repeat center center/cover;
+    padding: 40px;
+    color: white;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.culinary-excellence h2 {
+    color: #fff;
+}
+
+.culinary-excellence p {
+    color: #fff;
+}
+
+/* Sustainability & Community Section */
+.sustainability {
+    margin-bottom: 40px;
+}
+
+.sustainability h2 {
+    color: #3a7c3a; /* Green for sustainability section */
+}
+
+.sustainability p {
+    font-style: italic;
+}
+
+/* Awards Section */
+.awards {
+    background-color: #f9f1dc; /* Light gold to emphasize prestige */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.awards p {
+    font-weight: bold;
+    color: #8B0000;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-left: 4px solid #8B0000;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.testimonials p {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Team Section */
+.team {
+    text-align: center;
+}
+
+.team h2 {
+    color: #8B0000;
+}
+
+.team p {
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+    .about-section {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .culinary-excellence {
+        background-size: cover;
+        padding: 20px;
+    }
+}
+
+
+
+.charity-section {
+    padding: 80px;
+    background-color:rgb(76, 103, 76);
+    text-align: center;
+    
+}
+
+.charity-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.charity-section p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: whitesmoke;
+}
+
+.charity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.charity-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.charity-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.charity-item p {
+    font-size: 1rem;
+    padding: 15px;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="about-container">
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1>Welcome to Our Hotel</h1>
+                <p>Experience world-class hospitality and exquisite food right at your doorstep.</p>
+            </div>
+        </section>
+
+        <section class="about-details">
+            <div class="about-info">
+                <h2>About Our Hotel</h2>
+                <p>
+                    Established in [Year], our hotel has been a symbol of luxury and comfort. Located in the heart of [City Name], 
+                    we pride ourselves on offering our guests the finest dining experiences, impeccable service, and a serene atmosphere.
+                </p>
+                <p>
+                    Whether you're looking to unwind with a gourmet meal or enjoy a relaxing stay, we offer an experience like no other. 
+                    Our team is dedicated to making your stay memorable, whether you're here for business, leisure, or dining.
+                </p>
+            </div>
+
+            <div class="about-image">
+                <img src="https://images.pexels.com/photos/2869215/pexels-photo-2869215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Our Hotel">
+            </div>
+        </section>
+
+        <section class="about-features">
+            <div class="feature-box">
+                <img src="https://images.pexels.com/photos/2504911/pexels-photo-2504911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Fine Dining">
+                <h3>Exquisite Dining</h3>
+                <p>Enjoy dishes curated by top chefs with fresh and locally sourced ingredients.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800" alt="World-Class Rooms">
+                <h3>Luxury Rooms</h3>
+                <p>Our rooms are designed to offer the utmost comfort and tranquility.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="https://images.pexels.com/photos/9199102/pexels-photo-9199102.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Unparalleled Service">
+                <h3>Top-Notch Service</h3>
+                <p>Our staff is here to provide you with exceptional service and care during your stay.</p>
+            </div>
+        </section>
+
+        <div class="about-section">
+            <h1>About Hotel PineApple</h1>
+        
+            <section class="hotel-history">
+                <h2>Our History</h2>
+                <p>Established in 1980, Hotel PineApple started as a family-owned establishment. Over the years, we have grown from a small boutique hotel 
+                   into a renowned hospitality brand, known for our attention to detail and our ability to provide a home away from home for our guests. 
+                   Our commitment to maintaining the highest standards of quality has remained unwavering throughout the decades.
+                </p>
+            </section>
+        
+            <section class="mission-vision">
+                <h2>Our Mission</h2>
+                <p>Our mission is to provide an exceptional dining and lodging experience that exceeds our guests' expectations. 
+                   We strive to create a welcoming and luxurious environment where every guest feels special and valued.
+                </p>
+                <h2>Our Vision</h2>
+                <p>To be recognized as a leading hotel that offers not only a stay but a lasting memory. We aim to continuously innovate 
+                   and set new standards in hospitality, ensuring that our guests have experiences that they will cherish forever.
+                </p>
+            </section>
+        
+            <section class="culinary-excellence">
+                <h2>Culinary Excellence</h2>
+                <p>At Hotel PineApple, our chefs craft every meal with love and expertise. We are proud to use only the finest ingredients, 
+                   sourced locally whenever possible, to create dishes that are not only delicious but also a work of art. Our diverse menu 
+                   reflects our commitment to catering to all tastes, from classic favorites to avant-garde creations.
+                </p>
+            </section>
+        
+            <section class="sustainability">
+                <h2>Sustainability & Community</h2>
+                <p>We believe in giving back to the environment and our community. From using eco-friendly products and minimizing waste 
+                   to supporting local farmers and artisans, sustainability is at the core of our operations. We are also proud to be involved 
+                   in various community outreach programs, helping to improve the lives of those around us.
+                </p>
+            </section>
+        
+            <section class="awards">
+                <h2>Awards & Recognition</h2>
+                <p>Over the years, Hotel PineApple has been honored with numerous awards for excellence in hospitality, dining, and sustainability. 
+                   These accolades are a testament to our team's hard work and dedication. Some of our notable achievements include the 'Best Boutique Hotel' 
+                   award and recognition for our exceptional culinary experiences.
+                </p>
+            </section>
+        
+            <section class="testimonials">
+                <h2>What Our Guests Say</h2>
+                <p>"Staying at Hotel PineApple was an unforgettable experience. The staff went above and beyond to make sure we had everything we needed." - John Doe</p>
+                <p>"The food was out of this world, and the service was impeccable. I can't wait to come back!" - Jane Smith</p>
+                <p>"From the moment we arrived, we felt pampered. The attention to detail in every aspect of our stay was remarkable." - Sarah Johnson</p>
+            </section>
+        
+            <section class="team">
+                <h2>Meet Our Team</h2>
+                <p>Our team at Hotel PineApple is composed of dedicated professionals with a passion for hospitality. 
+                   From our front desk staff to our housekeeping team, every member plays a vital role in making your stay memorable. 
+                   Our chefs, waitstaff, and management are committed to providing you with the best service possible, ensuring that 
+                   every aspect of your visit is exceptional.
+                </p>
+            </section>
+
+        </div>
+        <section class="charity-section">
+            <h2>Our Charities and Funds</h2>
+            <p>At [Hotel Name], we believe in making a difference beyond offering luxury stays and delicious meals. Our dedication extends to supporting charitable organizations and community efforts, helping to create a better world for all.</p>
+            
+            <div class="charity-grid">
+                <div class="charity-item">
+                    <img src="https://th.bing.com/th/id/OIP.WpHFQ_iCLirGjJWQdCj2rAHaE8?rs=1&pid=ImgDetMain" alt="Charity 1">
+                    <p>Children's Education Fund - Supporting the education of underprivileged children.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://img.apmcdn.org/8bcc2cbcf3f71408eb864a1141446ccd4bd91347/uncropped/1212b5-20111120-homeless4.jpg" alt="Charity 2">
+                    <p>Local Food Bank - Providing meals to families in need within our community.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://th.bing.com/th/id/OIP.A0aPbqBMc-8RafYdduWLQwHaE8?rs=1&pid=ImgDetMain" alt="Charity 3">
+                    <p>Environmental Conservation - Protecting our planet through reforestation efforts.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://th.bing.com/th/id/OIP.QAiaVyFtFB7UTlSXqnQS_wHaD4?rs=1&pid=ImgDetMain" alt="Charity 4">
+                    <p>Healthcare Support Fund - Offering medical supplies and support for underserved communities.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://www.southcom.mil/portals/7/Images/Focus%20Areas%20Module/FADR%20header%20pic.jpg?ver=2016-11-16-114338-427" alt="Charity 5">
+                    <p>Disaster Relief Fund - Aiding communities affected by natural disasters with immediate relief.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://petofy.blob.core.windows.net/petofycontainer/2021-08-27/20210827T095823485.jpeg" alt="Charity 6">
+                    <p>Animal Welfare Organization - Protecting and caring for animals in need.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://static.toiimg.com/imagenext/toiblogs/photo/readersblog/wp-content/uploads/2020/05/IMG-20200511-WA0014.jpg" alt="Charity 7">
+                    <p>Women's Empowerment Program - Helping women in marginalized communities thrive.</p>
+                </div>
+                <div class="charity-item">
+                    <img src="https://www.halma.in/~/media/Files/H/Halma/India/press-releases/WFL_children%20in%20Bihar.jpg?h=541&w=811" alt="Charity 8">
+                    <p>Clean Water Initiative - Providing access to clean drinking water in rural areas.</p>
+                </div>
+               
+            </div>
+        </section>
+        
+    </div>
+</body>
+</html>
