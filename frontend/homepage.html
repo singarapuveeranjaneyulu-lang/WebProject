@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Food Ordering</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* styles.css */
+
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
+.cart{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    align-items: center;
+    
+}
+
+nav .cart a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url(hotelbackround.webp);
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 60px; /* To offset the fixed navbar */
+}
+.hero-content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    background-image: ur;
+    
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-content .btn {
+    background-color: #FFD700;
+    padding: 0.75rem 2rem;
+    text-transform: uppercase;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.hero-content .btn:hover {
+    background-color: #e6c200;
+}
+
+/* Menu Section */
+.menu-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.menu-section h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background-color: #e6c200;
+    padding: 20px;
+}
+
+.category {
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.category:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.category h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Category Items */
+.category-items {
+    display: none; /* Hidden by default */
+}
+
+.items-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.items-container h3 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.menu-item {
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.menu-item h4 {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+}
+
+.menu-item p {
+    margin: 0.5rem 0;
+}
+
+.add-cart-btn {
+    background-color: #FFD700;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.add-cart-btn:hover {
+    background-color: #e6c200;
+}
+
+.back-btn {
+    background-color: #333;
+    color: white;
+    padding: 0.7rem 2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.back-btn:hover {
+    background-color: #555;
+}
+/* Order Form Section */
+.order-section {
+    padding: 3rem 2rem;
+    background-color: #f0f0f5;
+}
+
+.order-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.order-section form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #333;
+    outline: none;
+}
+
+.submit-btn {
+    background-color: #333;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #555;
+}
+* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        display: none;
+    }
+
+    nav ul li {
+        margin: 1rem 0;
+    }
+    nav .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+#signin{
+    width: 100px;
+    height: 30px;
+    background-color: #edd51e;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    /* color: #ccc; */
+    /* display: none; */
+
+}
+#signin a{
+    text-decoration: none;
+    color:black;
+    font-weight: 400;
+}
+#signin:active{
+    background-color: #e6c200;
+}
+
+
+.testimonial-section {
+    padding: 50px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+}
+.testimonial-container {
+    display: flex;
+    align-items: center;
+    max-width: 1300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.testimonial-image img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.testimonial-text {
+    padding: 20px;
+    text-align: left;
+}
+
+blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 0 0 10px 0;
+    color: #555;
+}
+h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.special-dish-section {
+    padding: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+
+}
+
+.dish-container {
+    display: flex;
+    align-items: center;
+    max-width: 1300px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dish-image img {
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+}
+
+.dish-description {
+    padding: 30px;
+    text-align: left;
+}
+
+.dish-description h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.dish-description p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.order-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: #e55339;
+}
+
+.about-features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.feature-box {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px;
+}
+
+.feature-box:last-child {
+    margin-right: 0;
+}
+
+.feature-box img {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 15px;
+    object-fit: fill;
+}
+.feature-box h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+
+
+.charity-section {
+    padding: 80px;
+    background-color:rgb(76, 103, 76);
+    text-align: center;
+    
+}
+
+.charity-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.charity-section p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: whitesmoke;
+}
+
+.charity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.charity-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.charity-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.charity-item p {
+    font-size: 1rem;
+    padding: 15px;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+}
+
+
+.contact-header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 0; /* Reduced padding */
+}
+.contact-header h1 {
+    font-size: 2rem; /* Smaller font size */
+    margin-bottom: 10px;
+}
+
+.contact-header p {
+    font-size: 1rem; /* Smaller font size */
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px; /* Reduced padding */
+    background-color: white;
+}
+
+.contact-details {
+    flex: 1;
+    margin-right: 30px; /* Reduced margin */
+}
+
+.contact-details h2 {
+    font-size: 1.8rem; /* Slightly smaller */
+    margin-bottom: 10px;
+}
+.contact-details p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.contact-form {
+    flex: 1;
+}
+
+.contact-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1rem; /* Smaller font */
+    margin-bottom: 8px; /* Smaller margin */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 15px; /* Smaller margin */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 8px 15px; /* Smaller button */
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact-form button:hover {
+    background-color: #e55339;
+}
+
+.contact-map {
+    text-align: center;
+    padding: 30px 0; /* Reduced padding */
+    background-color: #333;
+    color: white;
+}
+
+.contact-map h2 {
+    font-size: 2rem; /* Smaller font */
+    margin-bottom: 20px;
+}
+
+.map-image {
+    width: 10%; /* Smaller map size */
+    height: auto;
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav>
+    <div class="logo">HOTEL PINEAPPLE</div>
+    <ul>
+        <li><a href="about.html">About Us</a> </li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#order">Order Now</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <div class="cart">
+        
+        <a href="cart.html" >Cart (0)</a>
+        <button id="signin"><a href="loginpage.html">Logout</a></button>
+        
+    </div>
+</nav>
+ <!-- Hero Section -->
+ <header class="hero">
+    <div class="hero-content">
+        <h1>Delicious Meals Delivered to Your Door</h1>
+        <p>Enjoy a variety of meals at our luxury hotel</p>
+        <a href="#menu" class="btn">View Menu</a>
+    </div>
+</header>
+<section class="testimonial-section">
+    <div class="testimonial-container">
+        <div class="testimonial-image">
+            <img src="https://images.news18.com/ibnlive/uploads/2017/11/Shah-Rukh-Khan-at-the-Millennium-Dome-London.jpg?impolicy=website&width=0&height=0" alt="Great Person">
+        </div>
+        <div class="testimonial-text">
+            <blockquote>
+                "Staying at this hotel has been an absolute pleasure. The ambiance, the food, and the exceptional service make it one of the best experiences I've had. I highly recommend this place for anyone looking for comfort and gourmet dining."
+            </blockquote>
+            <h4>- Shar Rukh Khan </h4>
+        </div>
+    </div>
+</section>
+<p> select the items from given gategories </p>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h2>Our Menu</h2>
+        
+        <!-- Category Grid -->
+        <div class="category-grid">
+            <div class="category" data-category="veg">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqkO0z4g9UaMKiFwgFMNaLmF8hYPovLX8sOw&s" alt="Vegetarian">
+                <h3>Vegetarian</h3>
+            </div>
+            <div class="category" data-category="nonveg">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAntgVNMfct1OmiTnBUZOMyEVECKo-lJ4U7g&s" alt="Non-Vegetarian">
+                <h3>Non-Vegetarian</h3>
+            </div>
+            <div class="category" data-category="drinks">
+                <img src="https://www.creativefabrica.com/wp-content/uploads/2023/05/28/Vector-art-illustration-cold-drinks-Graphics-70765623-1.jpg" alt="Drinks">
+                <h3>Drinks</h3>
+            </div>
+            <div class="category" data-category="snacks">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm40f91CuWwEgnJNNhnyp9a6_xZEDu4dOX6A&s" alt="Snacks">
+                <h3>Snacks</h3>
+            </div>
+        </div>
+
+<div class="container">
+    <h1>Food Menu</h1>
+    <div class="category-items">
+        <!-- Vegetarian Items -->
+        <div class="items-container" id="veg" style="display: none;">
+            <h3>Vegetarian Dishes</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs2paowiODEqEOJ082fLEWgrlBjvBlGd2GrQ&s" alt="Pasta">
+                    <h4>Pasta</h4>
+                    <p>Italian pasta with rich tomato sauce.  price : 150rs</p>
+                    <button onclick="addToCart('Pasta', 150)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://shwetainthekitchen.com/wp-content/uploads/2023/03/mixed-vegetable-curry-360x360.jpg" alt="Veg Curry">
+                        <h4>Veg Curry</h4>
+                        <p>Mixed vegetable curry with spices.  price : 200rs</p>
+                        <button onclick="addToCart('Veg Curry', 200)">Add to Cart</button>
+                </div>
+            
+             <!-- Additional Veg Items -->
+                <div class="menu-item">
+                   <img src="https://images.getrecipekit.com/20210913130056-paneer-butter-masala-curry-recipe.jpeg?aspect_ratio=16:9&quality=90" alt="Paneer Butter Masala">
+                   <h4>Paneer Butter Masala</h4>
+                   <p>Creamy paneer butter masala with gravy. Price: 250rs</p>
+                   <button onclick="addToCart('Paneer Butter Masala', 250)">Add to Cart</button>
+                </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNiy_E5OvjCjHHdM-mTwMmtQJYJIdTNCNJrw&s" alt="Dal Fry">
+                <h4>Dal Fry</h4>
+                <p>Spiced lentils cooked with herbs. Price: 180rs</p>
+                <button onclick="addToCart('Dal Fry', 180)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkYPtd6zb03pLpOPgJ7nApjKQOzlPH7zWEXA&s" alt="Aloo Gobi">
+                <h4>Aloo Gobi</h4>
+                <p>Classic potato and cauliflower curry. Price: 160rs</p>
+                <button onclick="addToCart('Aloo Gobi', 160)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvNIS7UYA8-kFoTFK2MgExNpd0kNmQ2Urv_A&s" alt="Malai Kofta">
+                <h4>Malai Kofta</h4>
+                <p>Soft koftas in a creamy sauce. Price: 280rs</p>
+                <button onclick="addToCart('Malai Kofta', 280)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://recipes.timesofindia.com/photo/53098310.cms" alt="Biryani">
+                <h4>Biryani</h4>
+                <p>Flavored rice with spices and vegetables. Price: 300rs</p>
+                <button onclick="addToCart('Biryani', 300)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYS0YcC6b1rhLexU3Uw3_WemoULt7MWvMyTg&s" alt="Chole Bhature">
+                <h4>Chole Bhature</h4>
+                <p>Spicy chickpea curry served with deep-fried bread. Price: 200rs</p>
+                <button onclick="addToCart('Chole Bhature', 200)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzbPSvK7SVXz2GVzJLkFWMeHZimz6QXi62Q&s" alt="Palak Paneer">
+                <h4>Palak Paneer</h4>
+                <p>Cottage cheese cooked in a spinach sauce. Price: 240rs</p>
+                <button onclick="addToCart('Palak Paneer', 240)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJVrC2Z7OCjmZQ1vrNmWWaJRrMaJ9HzFn2kg&s" alt="Masala Dosa">
+                <h4>Masala Dosa</h4>
+                <p>Crispy dosa stuffed with spicy potato filling. Price: 180rs</p>
+                <button onclick="addToCart('Masala Dosa', 180)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://sharethespice.com/wp-content/uploads/2024/02/Paneer-Tikka-Featured.jpg" alt="Paneer Tikka">
+                <h4>Paneer Tikka</h4>
+                <p>Grilled paneer marinated with spices. Price: 220rs</p>
+                <button onclick="addToCart('Paneer Tikka', 220)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdFvDYcHMMbeq0soauXwAmGGscxesNDJfK2g&s" alt="Gobi Manchurian">
+                <h4>Gobi Manchurian</h4>
+                <p>Spicy fried cauliflower in a tangy sauce. Price: 190rs</p>
+                <button onclick="addToCart('Gobi Manchurian', 190)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeZqDy7K-ayGgfNqwWQ-Kn9NfObxtiHR6qew&s" alt="Rajma Chawal">
+                <h4>Rajma Chawal</h4>
+                <p>Red kidney beans curry served with rice. Price: 170rs</p>
+                <button onclick="addToCart('Rajma Chawal', 170)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vpVaCdiZ2fatQEd52s2yNoZGAS2kOykd9A&s" alt="Sambar Vada">
+                <h4>Sambar Vada</h4>
+                <p>Crispy lentil donuts served with sambar. Price: 160rs</p>
+                <button onclick="addToCart('Sambar Vada', 160)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIO1mdAYuzVkqJuSOTHGPLisf9NoeTPLoP2A&s" alt="Stuffed Paratha">
+                <h4>Stuffed Paratha</h4>
+                <p>Whole wheat flatbread stuffed with spiced potatoes. Price: 150rs</p>
+                <button onclick="addToCart('Stuffed Paratha', 150)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.news18.com/webstories/2023/11/Dhokla-Gujarati-Dish.jpeg" alt="Dhokla">
+                <h4>Dhokla</h4>
+                <p>Steamed fermented lentil and rice cakes. Price: 140rs</p>
+                <button onclick="addToCart('Dhokla', 140)">Add to Cart</button>
+            </div>
+            </div>
+            <!-- Add more vegetarian items here -->
+        </div>
+        <button class="back-btn">Back to Categories</button>
+    </div>
+
+    <!-- Non-Vegetarian Items -->
+    <div class="items-container" id="nonveg" style="display: none;">
+        <h3>Non-Vegetarian Dishes</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://www.spiceindiaonline.com/wp-content/uploads/2021/05/Tandoori-Chicken-20.jpg" alt="Grilled Chicken">
+                <h4>Grilled Chicken</h4>
+                <p>Juicy grilled chicken served with salad.  price : 320rs</p>
+                <button onclick="addToCart('Grilled Chicken', 320)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS04vk6e72FUS312GCeg-P5nVeOakK-Nevsmw&s" alt="Fish Fry">
+                <h4>Fish Fry</h4>
+                <p>Crispy fried fish with lemon.  price : 450rs</p>
+                <button onclick="addToCart('Fish Fry', 450)">Add to Cart</button>
+            </div>
+            
+            <!-- Additional Items -->
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX6Yqk_LEZiv7KnFcp50PQNlljyEgKB0zixA&s" alt="Mutton Biryani">
+                <h4>Mutton Biryani</h4>
+                <p>Spicy mutton biryani served with raita. Price: 350rs</p>
+                <button onclick="addToCart('Mutton Biryani', 350)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://www.sanjanafeasts.co.uk/wp-content/uploads/2023/07/Paneer-Tikka-Kebabs-on-a-platter-with-fresh-naan-bread-735x1103.jpg" alt="Paneer Tikka">
+                <h4>Paneer Tikka</h4>
+                <p>Grilled paneer cubes with spices. Price: 280rs</p>
+                <button onclick="addToCart('Paneer Tikka', 280)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQspM8L_hk35PUpXU9lU1Q3-lgtrbb_4wo6Bw&s" alt="Butter Naan">
+                <h4>Butter Naan</h4>
+                <p>Soft butter naan, perfect with curries. Price: 40rs</p>
+                <button onclick="addToCart('Butter Naan', 40)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLbKDjJGR7WN-a1g1QfTV747GlGjFeToYR-w&s" alt="Chicken Curry">
+                <h4>Chicken Curry</h4>
+                <p>Rich chicken curry with Indian spices. Price: 270rs</p>
+                <button onclick="addToCart('Chicken Curry', 270)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_n9VRA9ObUeNJj32bYmR5p3ANksZuRXmK0g&s" alt="Tandoori Prawns">
+                <h4>Tandoori Prawns</h4>
+                <p>Succulent prawns marinated with spices and grilled. Price: 500rs</p>
+                <button onclick="addToCart('Tandoori Prawns', 500)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJM55Iol-JpFUVTJAE9M0RJeEkTmTT6n3Ekw&s" alt="Lamb Chops">
+                <h4>Lamb Chops</h4>
+                <p>Grilled lamb chops served with mint sauce. Price: 650rs</p>
+                <button onclick="addToCart('Lamb Chops', 650)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT64zQAebFM4UbsIyXTQ0_gUYllE5latYUajg&s" alt="Egg Curry">
+                <h4>Egg Curry</h4>
+                <p>Boiled eggs in a spicy tomato-based curry. Price: 180rs</p>
+                <button onclick="addToCart('Egg Curry', 180)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://iowagirleats.com/wp-content/uploads/2024/09/Perfect-Grilled-Steak-with-Herb-Butter-iowagirleats-Featured-1200x2-1.jpg" alt="Beef Steak">
+                <h4>Beef Steak</h4>
+                <p>Juicy beef steak served with mashed potatoes. Price: 750rs</p>
+                <button onclick="addToCart('Beef Steak', 750)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmfELWub86ptTKq4aa_L10TUN318wTetEHg&s" alt="Tandoori Roti">
+                <h4>Tandoori Roti</h4>
+                <p>Traditional whole wheat roti baked in a tandoor. Price: 30rs</p>
+                <button onclick="addToCart('Tandoori Roti', 30)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToa_FymHz42s8qnYFvyenaJTUkFrFvcL8tWQ&s" alt="Prawn Biryani">
+                <h4>Prawn Biryani</h4>
+                <p>Delicious prawn biryani with fragrant rice. Price: 400rs</p>
+                <button onclick="addToCart('Prawn Biryani', 400)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://arteflame.com/cdn/shop/articles/Grilled_Shawarma_Recipe_on_the_Arteflame_Grill.webp?v=1716336625&width=1600" alt="Shawarma">
+                <h4>Shawarma</h4>
+                <p>Marinated meat wrapped in pita bread with veggies. Price: 150rs</p>
+                <button onclick="addToCart('Shawarma', 150)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvLeYnY8K8QXYuQdgY1Jb90Yq4CN4cC0jzyQ&s" alt="Fried Chicken Wings">
+                <h4>Fried Chicken Wings</h4>
+                <p>Crispy fried chicken wings served with sauce. Price: 220rs</p>
+                <button onclick="addToCart('Fried Chicken Wings', 220)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRINDQ1n8vhJFHQe6uYns9rp0n7umI0qdCYjg&s" alt="Keema Naan">
+                <h4>Keema Naan</h4>
+                <p>Stuffed naan with spiced minced meat filling. Price: 90rs</p>
+                <button onclick="addToCart('Keema Naan', 90)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://anjappar.ch/wp-content/uploads/2023/11/history-of-chicken-65.webp" alt="Chicken 65">
+                <h4>Chicken 65</h4>
+                <p>Spicy fried chicken bites with curry leaves. Price: 260rs</p>
+                <button onclick="addToCart('Chicken 65', 260)">Add to Cart</button>
+            </div>
+            
+            
+            <!-- Add more non-vegetarian items here -->
+        </div>
+        <button class="back-btn">Back to Categories</button>
+    </div>
+
+    <!-- Drinks Items -->
+    <div class="items-container" id="drinks" style="display: none;">
+        <h3>Drinks</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQspESde7KZewIFjQzIIZYHXP0pwks2AhfSIw&s" alt="Coffee">
+                <h4>Coffee</h4>
+                <p>Freshly brewed coffee.  price : 120rs</p>
+                <button onclick="addToCart('Coffee', 120)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://epicureanalley.com/wp-content/uploads/2019/12/Fresh-Juice-1.jpg" alt="Juice">
+                <h4>Fresh Juice</h4>
+                <p>Assorted fruit juices.  price : 190rs</p>
+                <button onclick="addToCart('Fresh Juice', 190)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://th.bing.com/th/id/OIP.ALzuTN41RTso5F0c8kb7cAHaKS?rs=1&pid=ImgDetMain" alt="Coffee">
+                <h4>Pepsi</h4>
+                <p>A pepsi cooldrink.  price : 120rs</p>
+                <button onclick="addToCart('Pepsi', 120)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5307ef37224391.57397a56d79da.jpg" alt="Juice">
+                <h4>Cocacola</h4>
+                <p>A cocacola cooldrinks.  price : 190rs</p>
+                <button onclick="addToCart('Cocacola', 190)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://th.bing.com/th/id/OIP.INhLvU6s2k3VU1S3MVMiegHaF4?rs=1&pid=ImgDetMain" alt="Coffee">
+                <h4>Brandy</h4>
+                <p>Distilled wine.  price : 120rs</p>
+                <button onclick="addToCart('Brandy', 120)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://th.bing.com/th/id/OIP.fxwSFEEEjbq0qApS_JVCRQHaFj?rs=1&pid=ImgDetMain" alt="Juice">
+                <h4>RED wine</h4>
+                <p>Dark coloured fermented grape juice.  price : 190rs</p>
+                <button onclick="addToCart('RED wine', 190)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://static.toiimg.com/photo/83173328.cms" alt="Tea">
+                <h4>Tea</h4>
+                <p>Freshly brewed hot tea. Price: 80rs</p>
+                <button onclick="addToCart('Tea', 80)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://www.whiskaffair.com/wp-content/uploads/2020/04/Virgin-Mojito-1.jpg" alt="Mojito">
+                <h4>Mojito</h4>
+                <p>Refreshing mint and lime cocktail. Price: 150rs</p>
+                <button onclick="addToCart('Mojito', 150)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqcr15RLJFfqVeCy-TRBpM12Mc5dRp49R8_Q&s" alt="Lassi">
+                <h4>Lassi</h4>
+                <p>Sweetened yogurt-based drink. Price: 100rs</p>
+                <button onclick="addToCart('Lassi', 100)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://www.foodandwine.com/thmb/V1OEgtLQGUv_w2Fvm40WMLsJ4rk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Indulgent-Hot-Chocolate-FT-RECIPE0223-fd36942ef266417ab40440374fc76a15.jpg" alt="Hot Chocolate">
+                <h4>Hot Chocolate</h4>
+                <p>Rich and creamy hot chocolate. Price: 160rs</p>
+                <button onclick="addToCart('Hot Chocolate', 160)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/milkshake-b0d6105.jpg" alt="Milkshake">
+                <h4>Milkshake</h4>
+                <p>Delicious thick milkshake in various flavors. Price: 180rs</p>
+                <button onclick="addToCart('Milkshake', 100)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-36iRzQbsLxYq7wiwHtSy4U2JRqB2Xufeag&s" alt="Coconut Water">
+                <h4>Coconut Water</h4>
+                <p>Fresh and natural coconut water. Price: 90rs</p>
+                <button onclick="addToCart('Coconut Water', 90)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://swasthya-sambad.com/wp-content/uploads/2024/06/coconut-water.jpg" alt="Smoothie">
+                <h4>Fruit Smoothie</h4>
+                <p>Blended fruit smoothie with fresh fruits. Price: 200rs</p>
+                <button onclick="addToCart('Fruit Smoothie', 200)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaFQ9OzvK22KWgWUlsC92vS75ry6MaXwXKgg&s" alt="Lemonade">
+                <h4>Lemonade</h4>
+                <p>Refreshing homemade lemonade. Price: 120rs</p>
+                <button onclick="addToCart('Lemonade', 120)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://mansionz.in/cdn/shop/files/RUSTYFINESTBLENDEDWHISKEY.jpg?v=1724403422" alt="Whiskey">
+                <h4>Whiskey</h4>
+                <p>Premium aged whiskey. Price: 300rs</p>
+                <button onclick="addToCart('Whiskey', 300)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://delhidutyfree.co.in/media/catalog/product/cache/d58eb6b6cd0b875591a577c8f7a3618e/2/0/2000071_1_oylemj3wbmoosn25.jpg" alt="Vodka">
+                <h4>Vodka</h4>
+                <p>Classic vodka served with lime. Price: 250rs</p>
+                <button onclick="addToCart('Vodka', 250)">Add to Cart</button>
+            </div>
+            
+            <!-- Add more drinks items here -->
+        </div>
+        <button class="back-btn">Back to Categories</button>
+    </div>
+
+    <!-- Snacks Items -->
+    <div class="items-container" id="snacks" style="display: none;">
+        <h3>Snacks</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxnVgCV-6sbWMQ-OaALcEztviIakZJgzo5Jg&s" alt="Samosa">
+                <h4>Samosa</h4>
+                <p>Crispy samosas with chutney.  price : 340rs</p>
+                <button onclick="addToCart('Samosa', 340)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxROg1c6A7Xn4wH958TXxbrBwfKzeP0oxEfw&s" alt="Fries">
+                <h4>French Fries</h4>
+                <p>Golden crispy french fries.  price : 650rs</p>
+                <button onclick="addToCart('French Fries', 650)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKQN_W0_yhzUq6ansrYAoNPhJb7AaK0yMKg&s" alt="Samosa">
+                <h4>Chips</h4>
+                <p>One packet of chips.  price : 40rs</p>
+                <button onclick="addToCart('Chips', 40)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrQYPTddHkMcC2iUBCuwvQef5VEUTdNUbfNQ&s" alt="Fries">
+                <h4>Banana chips</h4>
+                <p>. They are high in sugar and salt.  price : 90rs</p>
+                <button onclick="addToCart('Banana Chips', 90)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKCF5oPghT-R4JmTVtqRZupDBEREodum1FPg&s" alt="Samosa">
+                <h4>Crackers</h4>
+                <p>A cracker is a flat, dry baked biscuit typically made with flour..  price : 240rs</p>
+                <button onclick="addToCart('Crackers', 240)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Home_made_makkhan_bada.jpg/500px-Home_made_makkhan_bada.jpg" alt="Fries">
+                <h4>Badusha</h4>
+                <p>A sweet oiled badusha.  price : 650rs</p>
+                <button onclick="addToCart('Badusha', 650)">Add to Cart</button>
+            </div>
+            <!-- Add more snacks items here -->
+        </div>
+        <button class="back-btn">Back to Categories</button>
+    </div>
+</div>
+</section>
+
+
+<section class="special-dish-section">
+<div class="dish-container">
+    <div class="dish-image">
+        <img src="https://img.freepik.com/premium-photo/grilled-spicy-chicken-wings-with-ketchup-black-plate-dark-slate-stone-concrete_662214-219187.jpg" alt="Special Dish">
+    </div>
+    <div class="dish-description">
+        <h2>Today's Special</h2>
+        <p><strong>Dish Name:</strong> Signature Spicy Grilled Chicken</p>
+        <p>This mouth-watering dish is marinated in a blend of exotic spices, grilled to perfection, and served with a side of fresh vegetables. A customer favorite for its bold flavors and tender meat.</p>
+        <p><strong>Price:</strong> Rs800</p>
+        <a href="menu.html" class="order-button">Order Now</a>
+    </div>
+</div>
+</section>
+
+
+
+<section class="about-features">
+<div class="feature-box">
+    <img src="https://images.pexels.com/photos/2504911/pexels-photo-2504911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Fine Dining">
+    <h3>Exquisite Dining</h3>
+    <p>Enjoy dishes curated by top chefs with fresh and locally sourced ingredients.</p>
+</div>
+
+<div class="feature-box">
+    <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800" alt="World-Class Rooms">
+    <h3>Luxury Rooms</h3>
+    <p>Our rooms are designed to offer the utmost comfort and tranquility.</p>
+</div>
+
+<div class="feature-box">
+    <img src="https://images.pexels.com/photos/9199102/pexels-photo-9199102.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Unparalleled Service">
+    <h3>Top-Notch Service</h3>
+    <p>Our staff is here to provide you with exceptional service and care during your stay.</p>
+</div>
+</section>
+
+<BR><BR>
+
+
+
+<section class="charity-section">
+<h2>Our Charities and Funds</h2>
+<p>At [Hotel Name], we believe in making a difference beyond offering luxury stays and delicious meals. Our dedication extends to supporting charitable organizations and community efforts, helping to create a better world for all.</p>
+
+<div class="charity-grid">
+    <div class="charity-item">
+        <img src="https://th.bing.com/th/id/OIP.WpHFQ_iCLirGjJWQdCj2rAHaE8?rs=1&pid=ImgDetMain" alt="Charity 1">
+        <p>Children's Education Fund - Supporting the education of underprivileged children.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://img.apmcdn.org/8bcc2cbcf3f71408eb864a1141446ccd4bd91347/uncropped/1212b5-20111120-homeless4.jpg" alt="Charity 2">
+        <p>Local Food Bank - Providing meals to families in need within our community.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://th.bing.com/th/id/OIP.A0aPbqBMc-8RafYdduWLQwHaE8?rs=1&pid=ImgDetMain" alt="Charity 3">
+        <p>Environmental Conservation - Protecting our planet through reforestation efforts.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://th.bing.com/th/id/OIP.QAiaVyFtFB7UTlSXqnQS_wHaD4?rs=1&pid=ImgDetMain" alt="Charity 4">
+        <p>Healthcare Support Fund - Offering medical supplies and support for underserved communities.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://www.southcom.mil/portals/7/Images/Focus%20Areas%20Module/FADR%20header%20pic.jpg?ver=2016-11-16-114338-427" alt="Charity 5">
+        <p>Disaster Relief Fund - Aiding communities affected by natural disasters with immediate relief.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://petofy.blob.core.windows.net/petofycontainer/2021-08-27/20210827T095823485.jpeg" alt="Charity 6">
+        <p>Animal Welfare Organization - Protecting and caring for animals in need.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://static.toiimg.com/imagenext/toiblogs/photo/readersblog/wp-content/uploads/2020/05/IMG-20200511-WA0014.jpg" alt="Charity 7">
+        <p>Women's Empowerment Program - Helping women in marginalized communities thrive.</p>
+    </div>
+    <div class="charity-item">
+        <img src="https://www.halma.in/~/media/Files/H/Halma/India/press-releases/WFL_children%20in%20Bihar.jpg?h=541&w=811" alt="Charity 8">
+        <p>Clean Water Initiative - Providing access to clean drinking water in rural areas.</p>
+    </div>
+   
+</div>
+</section>
+
+
+
+<hr><HR>
+
+<section class="contact-header">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Please feel free to reach out for any inquiries, bookings, or feedback.</p>
+</section>
+
+<section class="contact-info">
+    <div class="contact-details">
+        <h2>Get in Touch</h2>
+        <p><strong>Address:</strong> 123 Hotel Avenue, City, Country</p>
+        <p><strong>Phone:</strong> +123 456 7890</p>
+        <p><strong>Email:</strong> info@hotelname.com</p>
+    </div>
+    
+    <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form action="#" method="post">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+<section class="contact-map">
+    <h2>Our Location</h2>
+   <a href="https://maps.app.goo.gl/EZczZ1g6ny8aSGoX9"><img src="https://th.bing.com/th/id/OIP.auT8uJ8ool77n4PdY1MxjgHaD4?rs=1&pid=ImgDetMain" alt="Hotel Location" class="map-image"></a>
+
+    <!-- Replace map-placeholder.jpg with an actual image of the hotel location or embed a Google Map -->
+</section>   
+
+
+<!-- Footer Section -->
+<footer id="contact">
+<div class="footer-content">
+    <p>Hotel PineApple - The best in town!</p>
+    <p>Contact : <a style="color: white;" href="moviereview.html">info@hotelpineapple.com</a></p>
+</div>
+</footer> 
+
+<!-- JavaScript File -->
+<script src="script.js"></script>
+        
+    <button onclick="goToCart()">View Cart</button>
+</div>
+
+</body>
+</html>

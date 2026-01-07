@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .cart {
+            border-top: 2px solid #4CAF50;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.1rem;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: right;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .actions button {
+            width: 48%;
+        }
+        .cart-empty {
+            text-align: center;
+            color: #888;
+            font-size: 1.2rem;
+        }
+        .cart-item-price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Your Cart</h1>
+    <div class="cart">
+        <ul id="cartItems"></ul>
+        <div class="total">Total: Rs <span id="totalPrice">0</span></div>
+    </div>
+    <div class="actions">
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="goBack()">Back to Menu</button>
+    </div>
+</div>
+
+<script>
+    function updateCartDisplay() {
+        const cartItems = document.getElementById('cartItems');
+        const totalPrice = document.getElementById('totalPrice');
+
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+
+        cartItems.innerHTML = '';
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+        } else {
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - <span class="cart-item-price">Rs ${item.price}</span>`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+        }
+
+        totalPrice.textContent = total;
+    }
+
+    function clearCart() {
+        localStorage.removeItem('cart');
+        updateCartDisplay();
+    }
+
+    function goBack() {
+        window.location.href = 'homepage.html';
+    }
+
+    // Update cart display on page load
+    updateCartDisplay();
+</script>
+
+</body>
+</html>

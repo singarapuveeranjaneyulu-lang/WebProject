@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    
+    <!-- Google Fonts for a luxurious look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    background-image: url('entryfood.jpg'); /* Luxurious background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.background-text {
+    position: absolute;
+    left: 50px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.background-text h1 {
+    font-family: 'Playfair Display', serif; /* Luxurious font for heading */
+    font-size: 64px;
+    line-height: 1.2;
+}
+
+.background-text p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent white */
+    padding: 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    width: 400px;
+    margin-right: 50px;
+    z-index: 2; /* Ensure it appears above the background text */
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    color: #333;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.button-group {
+    text-align: center;
+}
+
+.button-group button {
+    padding: 12px 30px;
+    background-color: #8B0000; /* Deep red for luxury */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-group button:hover {
+    background-color: #5a0000; /* Darker shade on hover */
+}
+
+.signup-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.signup-text a {
+    color: #8B0000;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Background Text -->
+        <div class="background-text">
+           <!-- <h1 style="color: yellow;">HOTEL PINEAPPLE</h1><BR> -->
+
+            <h1>Welcome to Your Luxurious<BR> Experience</h1>
+            <p>Log in to continue your journey</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-container">
+            <form class="login-form">
+                <div class="image-container">
+                    <img src="https://innovativebiotechng.com/wp-content/uploads/2018/02/team-member.jpg"Login Image>
+                </div>
+                <h2>Login</h2>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit"><a href="homepage.html" style="text-decoration: underline;text-decoration-color:#8B0000 ;color: white;"> Login</a></button>
+                </div>
+                <p class="signup-text">Don't have an account? <a href="#"><a href="register2.html">Sign up</a></a></p>
+            </form>
+        </div>
+    </div>
+    <script src="accounts.js"></script>
+</body>
+</html>

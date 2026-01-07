@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+
+    <!-- Google Fonts for a luxurious look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            animation: fadeInBackground 0.2s ease-in; /* Background fade-in animation */
+        }
+
+        .container {
+            height: 100vh;
+            background-image: url(meat\ .jpg); /* Luxurious background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: space-between; /* Adjust to space out the forms */
+            align-items: center;
+            position: relative;
+        }
+
+        /* Fade-in animation for the entire page */
+        @keyframes fadeInBackground {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .background-text {
+            position: absolute;
+            left: 50px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            z-index: 1;
+            animation: slideInText 2s ease-out; /* Text slide-in animation */
+        }
+
+        /* Slide-in animation for the background text */
+        @keyframes slideInText {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .background-text h1 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Luxurious font for heading */
+    font-size: 64px;
+    line-height: 1.2;
+    margin-left: 600px;
+    margin-right: 30px;
+    color: yellow;
+    font-size: 44px;
+    text-shadow: #8B0000;
+    margin-bottom: 670px;
+    margin-left: 960px;
+    padding: 10px;
+
+}
+
+        .registration-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            width: 450px;
+            margin: 20px;
+            z-index: 2;
+            border-radius: 20px;
+            margin-left: 80px;
+            opacity: 0;
+            animation: fadeInForm 1.5s forwards; /* Form fade-in animation */
+        }
+
+        /* Fade-in animation for the form */
+        @keyframes fadeInForm {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .registration-form h2, .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: scaleInImage 1.5s ease-in-out; /* Image scale-in animation */
+        }
+
+        /* Scale-in animation for the image */
+        @keyframes scaleInImage {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .image-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        .button-group button {
+            padding: 12px 30px;
+            background-color: #8B0000; /* Deep red for luxury */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Button hover animation */
+        }
+
+        .button-group button:hover {
+            background-color: #5a0000; /* Darker shade on hover */
+            transform: scale(1.05); /* Slight scaling on hover */
+        }
+
+        .signup-text, .login-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .signup-text a, .login-text a {
+            color: #8B0000;
+            text-decoration: none;
+        }
+
+        .signup-text a:hover, .login-text a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Background Text -->
+        <div class="background-text">
+          <h1>Hotel PineApple</h1>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="registration-container">
+            <form class="registration-form">
+                <div class="image-container">
+                    <img src="https://www.shutterstock.com/image-vector/male-female-symbols-concept-pink-260nw-215595481.jpg" alt="Registration Image">
+                </div>
+                <h2>Register</h2>
+                <div class="input-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-confirm-password">Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit">
+                        Register
+                    </button>
+                </div>
+                <p class="login-text">Already have an account? <a href="loginpage.html">Log In</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="accounts2.js"></script>
+</body>
+</html>
